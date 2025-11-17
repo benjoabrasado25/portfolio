@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import SEO from '../components/SEO';
 import './ProjectsPage.css';
 
 const ProjectsPage = () => {
@@ -22,6 +23,7 @@ const ProjectsPage = () => {
       category: 'web',
       icon: '💬',
       color: '#667eea',
+      downloadUrl: 'https://drive.google.com/file/d/13pdnqyMwgipsKLDfk4YHqgWg1o9ZQgZ_/view?usp=drive_link',
       images: [
         '/images/projects/zca-realtime-chat-1.png',
         '/images/projects/zca-realtime-chat-2.png',
@@ -80,6 +82,7 @@ const ProjectsPage = () => {
       category: 'web',
       icon: '📦',
       color: '#2196F3',
+      downloadUrl: 'https://drive.google.com/file/d/1D04ilzbQ9RaYXL1_IQS7j7feKm7gPDsh/view?usp=drive_link',
       images: [
         '/images/projects/zca-inventory-1.png',
         '/images/projects/zca-inventory-2.png',
@@ -161,6 +164,12 @@ const ProjectsPage = () => {
 
   return (
     <div className="projects-page">
+      <SEO
+        title="Projects"
+        description="View my portfolio of web applications including ZCA Realtime Chat, ZCA Inventory System, ZCA API Key Manager, and more full-stack projects built with React, Node.js, WordPress, and Socket.IO."
+        url="/projects"
+        keywords="Web Development Projects, React Projects, WordPress Plugins, Node.js Applications, Socket.IO Chat, Inventory Management, Full Stack Portfolio"
+      />
       {/* Header */}
       <section className="projects-page-header">
         <div className="header-background">
@@ -320,6 +329,22 @@ const ProjectsPage = () => {
               <h2>{selectedProject.title}</h2>
               <span className="modal-year">{selectedProject.year}</span>
             </div>
+
+            {selectedProject.downloadUrl && (
+              <div className="modal-download">
+                <a
+                  href={selectedProject.downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="download-button"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                  </svg>
+                  Download Plugin
+                </a>
+              </div>
+            )}
 
             {selectedProject.images && selectedProject.images.length > 0 && (
               <div className="modal-images">

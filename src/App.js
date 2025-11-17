@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,6 +15,7 @@ import ProjectsPage from './pages/ProjectsPage';
 function HomePage() {
   return (
     <>
+      <SEO />
       <Navbar />
       <Hero />
       <About />

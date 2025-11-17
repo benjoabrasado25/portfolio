@@ -1,3 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+Allow: /
 Disallow:
+
+# Sitemap
+Sitemap: https://benjomabrasado.space/sitemap.xml
