@@ -15,6 +15,31 @@ const ProjectsPage = () => {
   const webProjects = [
     {
       id: 1,
+      title: 'ZCA API Key Manager',
+      description: 'A full-stack web application for managing API keys and licenses for the ZCA Inventory WordPress plugin. Features JWT authentication, site activation tracking, trial management, and admin controls.',
+      fullDescription: 'ZCA API Key Manager is a comprehensive full-stack application built with React and MongoDB that manages API keys and licensing for the ZCA Inventory WordPress plugin. The system provides dynamic API key generation, multi-site activation tracking with configurable limits, 7-day trial periods per site, and WordPress integration via RESTful APIs. Features include a beautiful gradient UI, JWT-based authentication, and admin controls for site deactivation management.',
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Axios'],
+      category: 'web',
+      icon: '🔑',
+      color: '#667eea',
+      images: [
+        '/images/projects/zca-api-manager-1.png',
+        '/images/projects/zca-api-manager-2.png',
+      ],
+      features: [
+        'Dynamic API key generation',
+        'JWT-based authentication system',
+        'Multi-site activation tracking',
+        'Trial period management (7 days)',
+        'Admin dashboard with analytics',
+        'WordPress plugin integration',
+        'Site deactivation controls',
+        'Real-time license validation'
+      ],
+      year: '2025'
+    },
+    {
+      id: 2,
       title: 'ZCA Inventory System',
       description: 'A comprehensive WordPress inventory management plugin for small to medium businesses. Features include product management, real-time stock tracking, point of sale, currency settings, and detailed reporting.',
       fullDescription: 'ZCA Inventory is a full-featured WordPress plugin designed for inventory management in small to medium businesses. The plugin seamlessly integrates with WordPress and includes a modern dashboard, product catalog management, cashier/POS interface, sales reporting, and multi-currency support. Built as a WordPress plugin, it provides a seamless experience for WordPress store owners.',
@@ -46,7 +71,7 @@ const ProjectsPage = () => {
 
   const mobileProjects = [
     {
-      id: 2,
+      id: 3,
       title: 'Ridewatch.org',
       description: 'A cross-platform mobile application for ride tracking and management built with Flutter and Firebase, providing real-time updates and seamless user experience.',
       fullDescription: 'Ridewatch.org is a comprehensive ride tracking and management application that allows users to monitor and manage their rides in real-time. Built with Flutter framework for cross-platform compatibility and Firebase for backend services, the app features user authentication, real-time GPS tracking, ride history, and push notifications.',
