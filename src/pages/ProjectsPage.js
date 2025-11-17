@@ -15,6 +15,39 @@ const ProjectsPage = () => {
   const webProjects = [
     {
       id: 1,
+      title: 'ZCA Realtime Chat',
+      description: 'A comprehensive real-time chat support system built with Socket.IO and WordPress. Features live agent management, anonymous chat, multi-chat support, and seamless integration with licensing system.',
+      fullDescription: 'ZCA Realtime Chat is a full-featured WordPress plugin that provides real-time customer support through a sleek chat interface. Built with Socket.IO for instant messaging and MongoDB for data persistence, it offers agent management, multi-chat capabilities, automatic online/offline detection, and a beautiful chat widget. The system integrates with the ZCA API Key Manager for licensing, includes a 7-day trial period, and features custom branding that can be removed with license activation.',
+      technologies: ['WordPress', 'PHP', 'Socket.IO', 'Node.js', 'MongoDB', 'Express', 'jQuery'],
+      category: 'web',
+      icon: '💬',
+      color: '#667eea',
+      images: [
+        '/images/projects/zca-realtime-chat-1.png',
+        '/images/projects/zca-realtime-chat-2.png',
+        '/images/projects/zca-realtime-chat-3.png',
+        '/images/projects/zca-realtime-chat-4.png',
+        '/images/projects/zca-realtime-chat-5.png',
+        '/images/projects/zca-realtime-chat-6.png',
+      ],
+      features: [
+        'Real-time messaging with Socket.IO',
+        'Agent dashboard with live chat management',
+        'Anonymous and logged-in user support',
+        'Multi-chat capability per agent',
+        'Automatic online/offline status tracking',
+        'Chat rating and review system',
+        'WordPress database and MongoDB synchronization',
+        'License integration with branding removal',
+        '7-day trial period',
+        'Customizable chat widget',
+        'Browser notifications for agents',
+        'Chat history and analytics'
+      ],
+      year: '2025'
+    },
+    {
+      id: 2,
       title: 'ZCA API Key Manager',
       description: 'A full-stack web application for managing API keys and licenses for the ZCA Inventory WordPress plugin. Features JWT authentication, site activation tracking, trial management, and admin controls.',
       fullDescription: 'ZCA API Key Manager is a comprehensive full-stack application built with React and MongoDB that manages API keys and licensing for the ZCA Inventory WordPress plugin. The system provides dynamic API key generation, multi-site activation tracking with configurable limits, 7-day trial periods per site, and WordPress integration via RESTful APIs. Features include a beautiful gradient UI, JWT-based authentication, and admin controls for site deactivation management.',
@@ -39,7 +72,7 @@ const ProjectsPage = () => {
       year: '2025'
     },
     {
-      id: 2,
+      id: 3,
       title: 'ZCA Inventory System',
       description: 'A comprehensive WordPress inventory management plugin for small to medium businesses. Features include product management, real-time stock tracking, point of sale, currency settings, and detailed reporting.',
       fullDescription: 'ZCA Inventory is a full-featured WordPress plugin designed for inventory management in small to medium businesses. The plugin seamlessly integrates with WordPress and includes a modern dashboard, product catalog management, cashier/POS interface, sales reporting, and multi-currency support. Built as a WordPress plugin, it provides a seamless experience for WordPress store owners.',
@@ -71,7 +104,7 @@ const ProjectsPage = () => {
 
   const mobileProjects = [
     {
-      id: 3,
+      id: 4,
       title: 'Ridewatch.org',
       description: 'A cross-platform mobile application for ride tracking and management built with Flutter and Firebase, providing real-time updates and seamless user experience.',
       fullDescription: 'Ridewatch.org is a comprehensive ride tracking and management application that allows users to monitor and manage their rides in real-time. Built with Flutter framework for cross-platform compatibility and Firebase for backend services, the app features user authentication, real-time GPS tracking, ride history, and push notifications.',
