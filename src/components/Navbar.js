@@ -16,12 +16,9 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Portfolio', href: '#projects' },
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -53,6 +50,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
         >
           <span className="logo-text">Benjo</span>
+          <span className="logo-dot">.</span>
         </motion.a>
 
         <div className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
@@ -65,11 +63,19 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
             >
               {item.name}
             </motion.a>
           ))}
+          <motion.a
+            href="#contact"
+            className="nav-cta"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Work With Me
+          </motion.a>
         </div>
 
         <motion.button
@@ -105,6 +111,13 @@ const Navbar = () => {
                 {item.name}
               </motion.a>
             ))}
+            <motion.a
+              href="#contact"
+              className="mobile-nav-cta"
+              onClick={(e) => handleNavClick(e, '#contact')}
+            >
+              Work With Me
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

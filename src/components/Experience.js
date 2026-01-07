@@ -16,8 +16,6 @@ const Experience = () => {
       period: '2023 - 2025',
       description: 'Develop custom plugins and themes for WordPress as well as Laravel as backend, improving site functionality and user experience. My work ensures robust, reliable solutions that streamline operations and enhance overall performance.',
       technologies: ['WordPress', 'Laravel', 'PHP', 'MySQL'],
-      icon: '🚀',
-      color: '#667eea'
     },
     {
       company: 'Tas Tradesoft',
@@ -25,8 +23,6 @@ const Experience = () => {
       period: '2022 - 2023',
       description: 'Full Stack Developer specializing in Angular and Node.js, I create dynamic, responsive web applications. Design and implement robust server-side solutions.',
       technologies: ['Angular', 'Node.js', 'TypeScript', 'REST APIs'],
-      icon: '💻',
-      color: '#764ba2'
     },
     {
       company: 'CrowdConnect',
@@ -34,8 +30,6 @@ const Experience = () => {
       period: '2019 - 2022',
       description: 'Create cross-platform mobile applications with seamless user experiences and integrate Firebase SDK for robust backend functionalities.',
       technologies: ['Ionic', 'Firebase', 'Angular', 'TypeScript'],
-      icon: '📱',
-      color: '#f093fb'
     },
     {
       company: 'KnightSpear',
@@ -43,13 +37,21 @@ const Experience = () => {
       period: '2017 - 2018',
       description: 'Design and implement RESTful APIs, create dynamic user interfaces with Angular, and build robust back-end applications with Node.js using MongoDB as database.',
       technologies: ['Angular', 'Node.js', 'MongoDB', 'REST APIs'],
-      icon: '⚔️',
-      color: '#4facfe'
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
@@ -68,59 +70,50 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="section-header"
         >
+          <span className="section-tag mono-text">Career</span>
           <h2 className="section-title">Work Experience</h2>
-          <div className="section-underline"></div>
           <p className="section-subtitle">
             My professional journey building innovative solutions
           </p>
         </motion.div>
 
-        <div className="timeline">
+        <motion.div
+          className="experience-timeline"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="timeline-item"
+              className="experience-item"
               variants={itemVariants}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              transition={{ delay: index * 0.2 }}
             >
-              <div className="timeline-marker" style={{ background: exp.color }}>
-                <span className="timeline-icon">{exp.icon}</span>
+              <div className="experience-dot">
+                <div className="dot-inner"></div>
               </div>
+              <div className="experience-line"></div>
 
               <motion.div
-                className="timeline-content"
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
+                className="experience-card"
+                whileHover={{ y: -5, x: 5 }}
+                transition={{ duration: 0.2 }}
               >
-                <div className="experience-card">
-                  <div className="card-header" style={{ borderLeftColor: exp.color }}>
-                    <div className="company-info">
-                      <h3 className="company-name">{exp.company}</h3>
-                      <h4 className="role-name">{exp.role}</h4>
-                    </div>
-                    <span className="period-badge" style={{ background: `${exp.color}20`, color: exp.color }}>
-                      {exp.period}
-                    </span>
-                  </div>
-
-                  <p className="experience-description">{exp.description}</p>
-
-                  <div className="tech-stack">
-                    {exp.technologies.map((tech, i) => (
-                      <span key={i} className="tech-tag" style={{ borderColor: exp.color, color: exp.color }}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="card-top">
+                  <span className="experience-period mono-text">{exp.period}</span>
+                </div>
+                <h3 className="experience-company">{exp.company}</h3>
+                <h4 className="experience-role">{exp.role}</h4>
+                <p className="experience-description">{exp.description}</p>
+                <div className="experience-tech">
+                  {exp.technologies.map((tech, i) => (
+                    <span key={i} className="tech-pill">{tech}</span>
+                  ))}
                 </div>
               </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

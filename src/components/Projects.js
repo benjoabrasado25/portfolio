@@ -11,40 +11,36 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'WordPress Custom Solutions',
-      company: 'Boostly',
-      description: 'Developed custom WordPress plugins and themes with Laravel backend integration, enhancing site functionality and streamlining operations.',
-      technologies: ['WordPress', 'Laravel', 'PHP', 'MySQL'],
-      icon: '🚀',
-      color: '#667eea',
-      period: '2023-2025'
+      title: 'ZCA Realtime Chat',
+      description: 'Real-time chat support system with Socket.IO, live agent management, and WordPress integration.',
+      technologies: ['WordPress', 'Socket.IO', 'Node.js', 'MongoDB'],
+      image: '/images/projects/zca-realtime-chat-1.png',
+      year: '2025',
+      category: 'Plugin'
     },
     {
-      title: 'Dynamic Web Applications',
-      company: 'Tas Tradesoft',
-      description: 'Built responsive, dynamic web applications using Angular and Node.js with robust server-side solutions and RESTful APIs.',
-      technologies: ['Angular', 'Node.js', 'TypeScript', 'REST APIs'],
-      icon: '💻',
-      color: '#764ba2',
-      period: '2022-2023'
+      title: 'ZCA API Key Manager',
+      description: 'Full-stack application for managing API keys and licenses with JWT authentication.',
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+      image: '/images/projects/zca-api-manager-1.png',
+      year: '2025',
+      category: 'Web App'
     },
     {
-      title: 'Cross-Platform Mobile Apps',
-      company: 'CrowdConnect',
-      description: 'Created seamless cross-platform mobile applications with Ionic and integrated Firebase SDK for robust backend functionalities.',
-      technologies: ['Ionic', 'Firebase', 'Angular', 'TypeScript'],
-      icon: '📱',
-      color: '#f093fb',
-      period: '2019-2022'
+      title: 'ZCA Inventory System',
+      description: 'Comprehensive inventory management plugin with POS interface and multi-currency support.',
+      technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript'],
+      image: '/images/projects/zca-inventory-1.png',
+      year: '2024',
+      category: 'Plugin'
     },
     {
-      title: 'RESTful API Development',
-      company: 'KnightSpear',
-      description: 'Designed and implemented RESTful APIs, created dynamic UIs with Angular, and built back-end applications with Node.js and MongoDB.',
-      technologies: ['Angular', 'Node.js', 'MongoDB', 'Express'],
-      icon: '⚔️',
-      color: '#4facfe',
-      period: '2017-2018'
+      title: 'Ridewatch.org',
+      description: 'Cross-platform ride tracking app with real-time GPS and Firebase backend.',
+      technologies: ['Flutter', 'Dart', 'Firebase', 'Maps API'],
+      image: '/images/projects/ridewatch-1.jpeg',
+      year: '2021',
+      category: 'Mobile'
     },
   ];
 
@@ -78,10 +74,10 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="section-header"
         >
+          <span className="section-tag mono-text">My Work</span>
           <h2 className="section-title">Featured Projects</h2>
-          <div className="section-underline"></div>
           <p className="section-subtitle">
-            A showcase of my work across web and mobile development
+            A selection of projects that showcase my expertise in web and mobile development
           </p>
         </motion.div>
 
@@ -96,26 +92,29 @@ const Projects = () => {
               key={index}
               className="project-card"
               variants={itemVariants}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.2 }
-              }}
+              whileHover={{ y: -10 }}
             >
-              <div className="project-header" style={{ background: project.color }}>
-                <span className="project-icon">{project.icon}</span>
-                {project.company && (
-                  <span className="project-company">{project.company}</span>
-                )}
+              <div className="project-image-wrapper">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image"
+                />
+                <div className="project-overlay">
+                  <span className="project-category mono-text">{project.category}</span>
+                </div>
               </div>
 
               <div className="project-content">
+                <div className="project-meta">
+                  <span className="project-year mono-text">{project.year}</span>
+                </div>
                 <h3 className="project-title">{project.title}</h3>
-                <p className="project-period">{project.period}</p>
                 <p className="project-description">{project.description}</p>
 
                 <div className="project-tech-stack">
                   {project.technologies.map((tech, i) => (
-                    <span key={i} className="project-tech-tag" style={{ borderColor: project.color, color: project.color }}>
+                    <span key={i} className="project-tech-tag">
                       {tech}
                     </span>
                   ))}
@@ -131,16 +130,22 @@ const Projects = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <h3>Want to see more of my work?</h3>
-          <p>Explore my complete portfolio of web and mobile applications with detailed case studies.</p>
-          <motion.a
-            href="/projects"
-            className="projects-contact-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View All Projects
-          </motion.a>
+          <div className="cta-content">
+            <h3>Want to see more?</h3>
+            <p>Explore all my projects with detailed case studies and technical breakdowns.</p>
+            <motion.a
+              href="/projects"
+              className="projects-view-all-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View All Projects
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>

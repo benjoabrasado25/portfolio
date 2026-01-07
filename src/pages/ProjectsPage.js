@@ -21,8 +21,6 @@ const ProjectsPage = () => {
       fullDescription: 'ZCA Realtime Chat is a full-featured WordPress plugin that provides real-time customer support through a sleek chat interface. Built with Socket.IO for instant messaging and MongoDB for data persistence, it offers agent management, multi-chat capabilities, automatic online/offline detection, and a beautiful chat widget. The system integrates with the ZCA API Key Manager for licensing, includes a 7-day trial period, and features custom branding that can be removed with license activation.',
       technologies: ['WordPress', 'PHP', 'Socket.IO', 'Node.js', 'MongoDB', 'Express', 'jQuery'],
       category: 'web',
-      icon: '💬',
-      color: '#667eea',
       downloadUrl: 'https://drive.google.com/file/d/13pdnqyMwgipsKLDfk4YHqgWg1o9ZQgZ_/view?usp=drive_link',
       images: [
         '/images/projects/zca-realtime-chat-1.png',
@@ -55,8 +53,6 @@ const ProjectsPage = () => {
       fullDescription: 'ZCA API Key Manager is a comprehensive full-stack application built with React and MongoDB that manages API keys and licensing for the ZCA Inventory WordPress plugin. The system provides dynamic API key generation, multi-site activation tracking with configurable limits, 7-day trial periods per site, and WordPress integration via RESTful APIs. Features include a beautiful gradient UI, JWT-based authentication, and admin controls for site deactivation management.',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Axios'],
       category: 'web',
-      icon: '🔑',
-      color: '#667eea',
       images: [
         '/images/projects/zca-api-manager-1.png',
         '/images/projects/zca-api-manager-2.png',
@@ -80,8 +76,6 @@ const ProjectsPage = () => {
       fullDescription: 'ZCA Inventory is a full-featured WordPress plugin designed for inventory management in small to medium businesses. The plugin seamlessly integrates with WordPress and includes a modern dashboard, product catalog management, cashier/POS interface, sales reporting, and multi-currency support. Built as a WordPress plugin, it provides a seamless experience for WordPress store owners.',
       technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'jQuery'],
       category: 'web',
-      icon: '📦',
-      color: '#2196F3',
       downloadUrl: 'https://drive.google.com/file/d/1D04ilzbQ9RaYXL1_IQS7j7feKm7gPDsh/view?usp=drive_link',
       images: [
         '/images/projects/zca-inventory-1.png',
@@ -113,8 +107,6 @@ const ProjectsPage = () => {
       fullDescription: 'Ridewatch.org is a comprehensive ride tracking and management application that allows users to monitor and manage their rides in real-time. Built with Flutter framework for cross-platform compatibility and Firebase for backend services, the app features user authentication, real-time GPS tracking, ride history, and push notifications.',
       technologies: ['Flutter', 'Dart', 'Firebase', 'Google Maps API'],
       category: 'mobile',
-      icon: '🚗',
-      color: '#4CAF50',
       images: [
         '/images/projects/ridewatch-1.jpeg',
         '/images/projects/ridewatch-2.jpeg',
@@ -170,11 +162,13 @@ const ProjectsPage = () => {
         url="/projects"
         keywords="Web Development Projects, React Projects, WordPress Plugins, Node.js Applications, Socket.IO Chat, Inventory Management, Full Stack Portfolio"
       />
+
       {/* Header */}
       <section className="projects-page-header">
         <div className="header-background">
+          <div className="grid-pattern"></div>
           <motion.div
-            className="header-blob header-blob-1"
+            className="header-orb header-orb-1"
             animate={{
               y: [0, -20, 0],
               x: [0, 15, 0],
@@ -186,7 +180,7 @@ const ProjectsPage = () => {
             }}
           />
           <motion.div
-            className="header-blob header-blob-2"
+            className="header-orb header-orb-2"
             animate={{
               y: [0, 30, 0],
               x: [0, -20, 0],
@@ -205,10 +199,16 @@ const ProjectsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <a href="/" className="back-link">← Back to Home</a>
+            <a href="/" className="back-link mono-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              Back to Home
+            </a>
             <h1 className="page-title">My Projects</h1>
             <p className="page-subtitle">
-              A comprehensive showcase of web and mobile applications I've built
+              A collection of web and mobile applications I've built
             </p>
           </motion.div>
         </div>
@@ -227,19 +227,19 @@ const ProjectsPage = () => {
               className={`filter-button ${activeCategory === 'all' ? 'active' : ''}`}
               onClick={() => setActiveCategory('all')}
             >
-              <span className="filter-icon">🚀</span> All Projects ({allProjects.length})
+              All Projects ({allProjects.length})
             </button>
             <button
               className={`filter-button ${activeCategory === 'web' ? 'active' : ''}`}
               onClick={() => setActiveCategory('web')}
             >
-              <span className="filter-icon">💻</span> Web Development ({webProjects.length})
+              Web Development ({webProjects.length})
             </button>
             <button
               className={`filter-button ${activeCategory === 'mobile' ? 'active' : ''}`}
               onClick={() => setActiveCategory('mobile')}
             >
-              <span className="filter-icon">📱</span> Mobile Apps ({mobileProjects.length})
+              Mobile Apps ({mobileProjects.length})
             </button>
           </motion.div>
         </div>
@@ -259,10 +259,7 @@ const ProjectsPage = () => {
                 key={project.id}
                 className="project-card-page"
                 variants={itemVariants}
-                whileHover={{
-                  y: -10,
-                  transition: { duration: 0.2 }
-                }}
+                whileHover={{ y: -10 }}
                 onClick={() => setSelectedProject(project)}
               >
                 {project.images && project.images.length > 0 ? (
@@ -273,21 +270,23 @@ const ProjectsPage = () => {
                       className="project-image"
                     />
                     <div className="project-overlay">
-                      <span className="view-details">View Details →</span>
+                      <span className="view-details">View Details</span>
                     </div>
                   </div>
                 ) : (
-                  <div className="project-header-page" style={{ background: project.color }}>
-                    <span className="project-icon-page">{project.icon}</span>
+                  <div className="project-header-page">
+                    <span className="project-icon-page">{project.category === 'web' ? '💻' : '📱'}</span>
                   </div>
                 )}
 
                 <div className="project-content-page">
-                  <div className="project-category-badge">
-                    {project.category === 'web' ? '💻 Web' : '📱 Mobile'}
+                  <div className="project-meta-row">
+                    <span className="project-category-tag mono-text">
+                      {project.category === 'web' ? 'Web' : 'Mobile'}
+                    </span>
+                    <span className="project-year mono-text">{project.year}</span>
                   </div>
                   <h3 className="project-title-page">{project.title}</h3>
-                  <p className="project-year">{project.year}</p>
                   <p className="project-description-page">{project.description}</p>
 
                   <div className="project-tech-stack-page">
@@ -318,16 +317,22 @@ const ProjectsPage = () => {
         >
           <motion.div
             className="modal-content"
-            initial={{ scale: 0.8, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
+            exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="modal-close" onClick={() => setSelectedProject(null)}>×</button>
+            <button className="modal-close" onClick={() => setSelectedProject(null)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
 
             <div className="modal-header">
+              <span className="modal-category mono-text">{selectedProject.category === 'web' ? 'Web Development' : 'Mobile App'}</span>
               <h2>{selectedProject.title}</h2>
-              <span className="modal-year">{selectedProject.year}</span>
+              <span className="modal-year mono-text">{selectedProject.year}</span>
             </div>
 
             {selectedProject.downloadUrl && (
