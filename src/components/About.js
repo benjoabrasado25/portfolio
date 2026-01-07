@@ -70,7 +70,7 @@ const About = () => {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/benjo-abrasado"
+                href="https://www.linkedin.com/in/benjo-abrasado-002a8416a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"

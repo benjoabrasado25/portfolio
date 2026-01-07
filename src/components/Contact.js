@@ -1,13 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import './Contact.css';
+
+// Fix for default marker icon
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Custom cyan marker using SVG data URL
+const customIcon = new L.DivIcon({
+  className: 'custom-map-marker',
+  html: `
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 32 42">
+      <path fill="#00AFCD" stroke="#fff" stroke-width="1.5" d="M16 1C7.716 1 1 7.716 1 16c0 10.5 15 25 15 25s15-14.5 15-25c0-8.284-6.716-15-15-15z"/>
+      <circle cx="16" cy="16" r="6" fill="#fff"/>
+    </svg>
+  `,
+  iconSize: [32, 42],
+  iconAnchor: [16, 42],
+  popupAnchor: [0, -36]
+});
 
 const Contact = () => {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: false,
   });
+
+  // Bacolod City coordinates
+  const bacolodPosition = [10.6765, 122.9509];
 
   return (
     <section className="contact" id="contact" ref={ref}>
@@ -73,6 +101,35 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Leaflet Map */}
+          <motion.div
+            className="map-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <MapContainer
+              center={bacolodPosition}
+              zoom={13}
+              scrollWheelZoom={false}
+              className="leaflet-map"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+              />
+              <Marker position={bacolodPosition} icon={customIcon}>
+                <Popup>
+                  <div className="map-popup">
+                    <strong>Bacolod City, Philippines</strong>
+                    <br />
+                    Benjo M. Abrasado
+                  </div>
+                </Popup>
+              </Marker>
+            </MapContainer>
+          </motion.div>
+
           <motion.div
             className="contact-cta"
             initial={{ opacity: 0, y: 20 }}
@@ -105,7 +162,7 @@ const Contact = () => {
                 </svg>
               </motion.a>
               <motion.a
-                href="https://linkedin.com/in/benjo-abrasado"
+                href="https://www.linkedin.com/in/benjo-abrasado-002a8416a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
